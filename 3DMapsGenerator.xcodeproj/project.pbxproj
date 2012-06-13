@@ -1,0 +1,290 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B8D3E1521588DA2800F48BC3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8D3E1511588DA2800F48BC3 /* UIKit.framework */; };
+		B8D3E1541588DA2800F48BC3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8D3E1531588DA2800F48BC3 /* Foundation.framework */; };
+		B8D3E1561588DA2800F48BC3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8D3E1551588DA2800F48BC3 /* CoreGraphics.framework */; };
+		B8D3E15C1588DA2800F48BC3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B8D3E15A1588DA2800F48BC3 /* InfoPlist.strings */; };
+		B8D3E15E1588DA2800F48BC3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B8D3E15D1588DA2800F48BC3 /* main.m */; };
+		B8D3E1621588DA2800F48BC3 /* MGAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B8D3E1611588DA2800F48BC3 /* MGAppDelegate.m */; };
+		B8D3E1651588DA2800F48BC3 /* MGViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8D3E1641588DA2800F48BC3 /* MGViewController.m */; };
+		B8D3E1681588DA2800F48BC3 /* MGViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8D3E1661588DA2800F48BC3 /* MGViewController.xib */; };
+		B8D3E16F1588DA3600F48BC3 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8D3E16E1588DA3600F48BC3 /* OpenGLES.framework */; };
+		B8D3E1711588DA3C00F48BC3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8D3E1701588DA3C00F48BC3 /* QuartzCore.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		B8D3E14D1588DA2800F48BC3 /* 3DMapsGenerator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 3DMapsGenerator.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B8D3E1511588DA2800F48BC3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		B8D3E1531588DA2800F48BC3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		B8D3E1551588DA2800F48BC3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		B8D3E1591588DA2800F48BC3 /* 3DMapsGenerator-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "3DMapsGenerator-Info.plist"; sourceTree = "<group>"; };
+		B8D3E15B1588DA2800F48BC3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		B8D3E15D1588DA2800F48BC3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		B8D3E15F1588DA2800F48BC3 /* 3DMapsGenerator-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "3DMapsGenerator-Prefix.pch"; sourceTree = "<group>"; };
+		B8D3E1601588DA2800F48BC3 /* MGAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGAppDelegate.h; sourceTree = "<group>"; };
+		B8D3E1611588DA2800F48BC3 /* MGAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGAppDelegate.m; sourceTree = "<group>"; };
+		B8D3E1631588DA2800F48BC3 /* MGViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGViewController.h; sourceTree = "<group>"; };
+		B8D3E1641588DA2800F48BC3 /* MGViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGViewController.m; sourceTree = "<group>"; };
+		B8D3E1671588DA2800F48BC3 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MGViewController.xib; sourceTree = "<group>"; };
+		B8D3E16E1588DA3600F48BC3 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		B8D3E1701588DA3C00F48BC3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B8D3E14A1588DA2800F48BC3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B8D3E1711588DA3C00F48BC3 /* QuartzCore.framework in Frameworks */,
+				B8D3E16F1588DA3600F48BC3 /* OpenGLES.framework in Frameworks */,
+				B8D3E1521588DA2800F48BC3 /* UIKit.framework in Frameworks */,
+				B8D3E1541588DA2800F48BC3 /* Foundation.framework in Frameworks */,
+				B8D3E1561588DA2800F48BC3 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B8D3E1421588DA2800F48BC3 = {
+			isa = PBXGroup;
+			children = (
+				B8D3E1701588DA3C00F48BC3 /* QuartzCore.framework */,
+				B8D3E16E1588DA3600F48BC3 /* OpenGLES.framework */,
+				B8D3E1571588DA2800F48BC3 /* 3DMapsGenerator */,
+				B8D3E1501588DA2800F48BC3 /* Frameworks */,
+				B8D3E14E1588DA2800F48BC3 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B8D3E14E1588DA2800F48BC3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B8D3E14D1588DA2800F48BC3 /* 3DMapsGenerator.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B8D3E1501588DA2800F48BC3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B8D3E1511588DA2800F48BC3 /* UIKit.framework */,
+				B8D3E1531588DA2800F48BC3 /* Foundation.framework */,
+				B8D3E1551588DA2800F48BC3 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B8D3E1571588DA2800F48BC3 /* 3DMapsGenerator */ = {
+			isa = PBXGroup;
+			children = (
+				B8D3E1601588DA2800F48BC3 /* MGAppDelegate.h */,
+				B8D3E1611588DA2800F48BC3 /* MGAppDelegate.m */,
+				B8D3E1631588DA2800F48BC3 /* MGViewController.h */,
+				B8D3E1641588DA2800F48BC3 /* MGViewController.m */,
+				B8D3E1661588DA2800F48BC3 /* MGViewController.xib */,
+				B8D3E1581588DA2800F48BC3 /* Supporting Files */,
+			);
+			path = 3DMapsGenerator;
+			sourceTree = "<group>";
+		};
+		B8D3E1581588DA2800F48BC3 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B8D3E1591588DA2800F48BC3 /* 3DMapsGenerator-Info.plist */,
+				B8D3E15A1588DA2800F48BC3 /* InfoPlist.strings */,
+				B8D3E15D1588DA2800F48BC3 /* main.m */,
+				B8D3E15F1588DA2800F48BC3 /* 3DMapsGenerator-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B8D3E14C1588DA2800F48BC3 /* 3DMapsGenerator */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B8D3E16B1588DA2800F48BC3 /* Build configuration list for PBXNativeTarget "3DMapsGenerator" */;
+			buildPhases = (
+				B8D3E1491588DA2800F48BC3 /* Sources */,
+				B8D3E14A1588DA2800F48BC3 /* Frameworks */,
+				B8D3E14B1588DA2800F48BC3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = 3DMapsGenerator;
+			productName = 3DMapsGenerator;
+			productReference = B8D3E14D1588DA2800F48BC3 /* 3DMapsGenerator.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B8D3E1441588DA2800F48BC3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = MG;
+				LastUpgradeCheck = 0430;
+			};
+			buildConfigurationList = B8D3E1471588DA2800F48BC3 /* Build configuration list for PBXProject "3DMapsGenerator" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = B8D3E1421588DA2800F48BC3;
+			productRefGroup = B8D3E14E1588DA2800F48BC3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B8D3E14C1588DA2800F48BC3 /* 3DMapsGenerator */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B8D3E14B1588DA2800F48BC3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B8D3E15C1588DA2800F48BC3 /* InfoPlist.strings in Resources */,
+				B8D3E1681588DA2800F48BC3 /* MGViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B8D3E1491588DA2800F48BC3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B8D3E15E1588DA2800F48BC3 /* main.m in Sources */,
+				B8D3E1621588DA2800F48BC3 /* MGAppDelegate.m in Sources */,
+				B8D3E1651588DA2800F48BC3 /* MGViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		B8D3E15A1588DA2800F48BC3 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B8D3E15B1588DA2800F48BC3 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		B8D3E1661588DA2800F48BC3 /* MGViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B8D3E1671588DA2800F48BC3 /* en */,
+			);
+			name = MGViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B8D3E1691588DA2800F48BC3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		B8D3E16A1588DA2800F48BC3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B8D3E16C1588DA2800F48BC3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "3DMapsGenerator/3DMapsGenerator-Prefix.pch";
+				INFOPLIST_FILE = "3DMapsGenerator/3DMapsGenerator-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		B8D3E16D1588DA2800F48BC3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "3DMapsGenerator/3DMapsGenerator-Prefix.pch";
+				INFOPLIST_FILE = "3DMapsGenerator/3DMapsGenerator-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B8D3E1471588DA2800F48BC3 /* Build configuration list for PBXProject "3DMapsGenerator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B8D3E1691588DA2800F48BC3 /* Debug */,
+				B8D3E16A1588DA2800F48BC3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B8D3E16B1588DA2800F48BC3 /* Build configuration list for PBXNativeTarget "3DMapsGenerator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B8D3E16C1588DA2800F48BC3 /* Debug */,
+				B8D3E16D1588DA2800F48BC3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B8D3E1441588DA2800F48BC3 /* Project object */;
+}
