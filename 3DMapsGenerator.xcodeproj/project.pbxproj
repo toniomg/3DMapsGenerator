@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B8CE65C1158B3B0A006CBA53 /* OpenGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = B8CE65C0158B3B0A006CBA53 /* OpenGLView.m */; };
+		B8CE65C3158B3EA2006CBA53 /* SimpleVertex.glsl in Resources */ = {isa = PBXBuildFile; fileRef = B8CE65C2158B3EA2006CBA53 /* SimpleVertex.glsl */; };
+		B8CE65C5158B3EB8006CBA53 /* SimpleFragment.glsl in Resources */ = {isa = PBXBuildFile; fileRef = B8CE65C4158B3EB8006CBA53 /* SimpleFragment.glsl */; };
 		B8D3E1521588DA2800F48BC3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8D3E1511588DA2800F48BC3 /* UIKit.framework */; };
 		B8D3E1541588DA2800F48BC3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8D3E1531588DA2800F48BC3 /* Foundation.framework */; };
 		B8D3E1561588DA2800F48BC3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8D3E1551588DA2800F48BC3 /* CoreGraphics.framework */; };
@@ -14,12 +17,15 @@
 		B8D3E15E1588DA2800F48BC3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B8D3E15D1588DA2800F48BC3 /* main.m */; };
 		B8D3E1621588DA2800F48BC3 /* MGAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B8D3E1611588DA2800F48BC3 /* MGAppDelegate.m */; };
 		B8D3E1651588DA2800F48BC3 /* MGViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8D3E1641588DA2800F48BC3 /* MGViewController.m */; };
-		B8D3E1681588DA2800F48BC3 /* MGViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8D3E1661588DA2800F48BC3 /* MGViewController.xib */; };
 		B8D3E16F1588DA3600F48BC3 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8D3E16E1588DA3600F48BC3 /* OpenGLES.framework */; };
 		B8D3E1711588DA3C00F48BC3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8D3E1701588DA3C00F48BC3 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B8CE65BF158B3B0A006CBA53 /* OpenGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenGLView.h; sourceTree = "<group>"; };
+		B8CE65C0158B3B0A006CBA53 /* OpenGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenGLView.m; sourceTree = "<group>"; };
+		B8CE65C2158B3EA2006CBA53 /* SimpleVertex.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SimpleVertex.glsl; sourceTree = "<group>"; };
+		B8CE65C4158B3EB8006CBA53 /* SimpleFragment.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SimpleFragment.glsl; sourceTree = "<group>"; };
 		B8D3E14D1588DA2800F48BC3 /* 3DMapsGenerator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 3DMapsGenerator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8D3E1511588DA2800F48BC3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B8D3E1531588DA2800F48BC3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -32,7 +38,6 @@
 		B8D3E1611588DA2800F48BC3 /* MGAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGAppDelegate.m; sourceTree = "<group>"; };
 		B8D3E1631588DA2800F48BC3 /* MGViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGViewController.h; sourceTree = "<group>"; };
 		B8D3E1641588DA2800F48BC3 /* MGViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGViewController.m; sourceTree = "<group>"; };
-		B8D3E1671588DA2800F48BC3 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MGViewController.xib; sourceTree = "<group>"; };
 		B8D3E16E1588DA3600F48BC3 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		B8D3E1701588DA3C00F48BC3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -56,8 +61,6 @@
 		B8D3E1421588DA2800F48BC3 = {
 			isa = PBXGroup;
 			children = (
-				B8D3E1701588DA3C00F48BC3 /* QuartzCore.framework */,
-				B8D3E16E1588DA3600F48BC3 /* OpenGLES.framework */,
 				B8D3E1571588DA2800F48BC3 /* 3DMapsGenerator */,
 				B8D3E1501588DA2800F48BC3 /* Frameworks */,
 				B8D3E14E1588DA2800F48BC3 /* Products */,
@@ -75,6 +78,8 @@
 		B8D3E1501588DA2800F48BC3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B8D3E16E1588DA3600F48BC3 /* OpenGLES.framework */,
+				B8D3E1701588DA3C00F48BC3 /* QuartzCore.framework */,
 				B8D3E1511588DA2800F48BC3 /* UIKit.framework */,
 				B8D3E1531588DA2800F48BC3 /* Foundation.framework */,
 				B8D3E1551588DA2800F48BC3 /* CoreGraphics.framework */,
@@ -85,11 +90,14 @@
 		B8D3E1571588DA2800F48BC3 /* 3DMapsGenerator */ = {
 			isa = PBXGroup;
 			children = (
+				B8CE65C2158B3EA2006CBA53 /* SimpleVertex.glsl */,
+				B8CE65C4158B3EB8006CBA53 /* SimpleFragment.glsl */,
 				B8D3E1601588DA2800F48BC3 /* MGAppDelegate.h */,
 				B8D3E1611588DA2800F48BC3 /* MGAppDelegate.m */,
 				B8D3E1631588DA2800F48BC3 /* MGViewController.h */,
 				B8D3E1641588DA2800F48BC3 /* MGViewController.m */,
-				B8D3E1661588DA2800F48BC3 /* MGViewController.xib */,
+				B8CE65BF158B3B0A006CBA53 /* OpenGLView.h */,
+				B8CE65C0158B3B0A006CBA53 /* OpenGLView.m */,
 				B8D3E1581588DA2800F48BC3 /* Supporting Files */,
 			);
 			path = 3DMapsGenerator;
@@ -158,7 +166,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B8D3E15C1588DA2800F48BC3 /* InfoPlist.strings in Resources */,
-				B8D3E1681588DA2800F48BC3 /* MGViewController.xib in Resources */,
+				B8CE65C3158B3EA2006CBA53 /* SimpleVertex.glsl in Resources */,
+				B8CE65C5158B3EB8006CBA53 /* SimpleFragment.glsl in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -172,6 +181,7 @@
 				B8D3E15E1588DA2800F48BC3 /* main.m in Sources */,
 				B8D3E1621588DA2800F48BC3 /* MGAppDelegate.m in Sources */,
 				B8D3E1651588DA2800F48BC3 /* MGViewController.m in Sources */,
+				B8CE65C1158B3B0A006CBA53 /* OpenGLView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -184,14 +194,6 @@
 				B8D3E15B1588DA2800F48BC3 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		B8D3E1661588DA2800F48BC3 /* MGViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B8D3E1671588DA2800F48BC3 /* en */,
-			);
-			name = MGViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -283,6 +285,7 @@
 				B8D3E16D1588DA2800F48BC3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

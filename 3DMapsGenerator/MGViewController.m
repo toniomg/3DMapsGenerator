@@ -7,12 +7,23 @@
 //
 
 #import "MGViewController.h"
+#import "OpenGLView.h"
 
 @interface MGViewController ()
 
 @end
 
 @implementation MGViewController
+
+
+-(void)loadView{
+    
+    //Create the OpenGL view and add it to this view controller
+    CGRect screenBounds = [[UIScreen mainScreen] bounds];    
+    OpenGLView *glView = [[[OpenGLView alloc] initWithFrame:screenBounds] autorelease];
+    self.view = glView;
+    
+}
 
 - (void)viewDidLoad
 {
