@@ -24,20 +24,79 @@
 
 @implementation OpenGLView
 
+@synthesize zoom;
+
 typedef struct {
     float Position[3];
     float Color[4];
 } Vertex;
 
+#define TEX_COORD_MAX   1
+
 const Vertex Vertices[] = {
+    // Front
     {{1, -1, 0}, {1, 0, 0, 1}},
     {{1, 1, 0}, {1, 0, 0, 1}},
+    {{-1, 1, 0}, {1, 0, 0, 1}},
+    {{-1, -1, 0}, {1, 0, 0, 1}},
+    // Back
+    {{1, 1, -2}, {1, 0, 1, 1}},
+    {{-1, -1, -2}, {1, 0, 1, 1}},
+    {{1, -1, -2}, {1, 0, 1, 1}},
+    {{-1, 1, -2}, {1, 0, 0, 1}},
+    // Left
+    {{-1, -1, 0}, {1, 0, 0, 1}}, 
+    {{-1, 1, 0}, {0, 1, 0, 1}},
+    {{-1, 1, -2}, {0, 0, 1, 1}},
+    {{-1, -1, -2}, {0, 0, 0, 1}},
+    // Right
+    {{1, -1, -2}, {0, 1, 0, 1}},
+    {{1, 1, -2}, {0, 1, 0, 1}},
+    {{1, 1, 0}, {0, 1, 0, 1}},
+    {{1, -1, 0}, {0, 0, 0, 1}},
+    // Top
+    {{1, 1, 0}, {1, 1, 0, 1}},
+    {{1, 1, -2}, {1, 1, 0, 1}},
+    {{-1, 1, -2}, {1, 1, 0, 1}},
+    {{-1, 1, 0}, {1, 1, 0, 1}},
+    // Bottom
+    {{1, -1, -2}, {1, 0, 0, 1}},
+    {{1, -1, 0}, {0, 1, 0, 1}},
+    {{-1, -1, 0}, {0, 0, 1, 1}}, 
+    {{-1, -1, -2}, {0, 0, 0, 1}}
+};
+
+const Vertex Vertices2[] = {
+    // Front
+    {{1, -1, 0}, {0, 0, 0, 1}},
+    {{1, 1, 0}, {0, 1, 0, 1}},
     {{-1, 1, 0}, {0, 0, 1, 1}},
-    {{-1, -1, 0}, {0, 0,1, 1}},
-    {{1, -1, -1}, {1, 0, 0, 1}},
-    {{1, 1, -1}, {1, 0, 0, 1}},
-    {{-1, 1, -1}, {0, 1, 0, 1}},
-    {{-1, -1, -1}, {0, 1, 0, 1}}
+    {{-1, -1, 0}, {0, 0, 0, 1}},
+    // Back
+    {{3, 3, -2}, {0, 0, 0, 1}},
+    {{-3, -3, -2}, {0, 0, 0, 1}},
+    {{3, -3, -2}, {0, 0, 0, 1}},
+    {{-3, 3, -2}, {0, 0, 0, 1}},
+    // Left
+    {{-1, -1, 0}, {0, 0, 0, 1}}, 
+    {{-1, 1, 0}, {0, 1, 0, 1}},
+    {{-1, 1, -2}, {0, 0, 1, 1}},
+    {{-1, -1, -2}, {0, 0, 0, 1}},
+    // Right
+    {{1, -1, -2}, {0, 0, 0, 1}},
+    {{1, 1, -2}, {0, 1, 0, 1}},
+    {{1, 1, 0}, {0, 0, 1, 1}},
+    {{1, -1, 0}, {0, 0, 0, 1}},
+    // Top
+    {{1, 1, 0}, {0, 0, 0, 1}},
+    {{1, 1, -2}, {0, 1, 0, 1}},
+    {{-1, 1, -2}, {0, 0, 1, 1}},
+    {{-1, 1, 0}, {0, 0, 0, 1}},
+    // Bottom
+    {{1, -1, -2}, {0, 0, 0, 1}},
+    {{1, -1, 0}, {0, 1, 0, 1}},
+    {{-1, -1, 0}, {0, 0, 1, 1}}, 
+    {{-1, -1, -2}, {0, 0, 0, 1}}
 };
 
 const GLubyte Indices[] = {
@@ -45,21 +104,22 @@ const GLubyte Indices[] = {
     0, 1, 2,
     2, 3, 0,
     // Back
-    4, 6, 5,
-    4, 7, 6,
+    4, 5, 6,
+    4, 5, 7,
     // Left
-    2, 7, 3,
-    7, 6, 2,
+    8, 9, 10,
+    10, 11, 8,
     // Right
-    0, 4, 1,
-    4, 1, 5,
+    12, 13, 14,
+    14, 15, 12,
     // Top
-    6, 2, 1, 
-    1, 6, 5,
+    16, 17, 18,
+    18, 19, 16,
     // Bottom
-    0, 3, 7,
-    0, 7, 4    
+    20, 21, 22,
+    22, 23, 20
 };
+
 
 - (void)dealloc
 {
@@ -68,19 +128,20 @@ const GLubyte Indices[] = {
     [super dealloc];
 }
 
-- (void)setupVBOs {
-    
-    GLuint vertexBuffer;
-    glGenBuffers(1, &vertexBuffer);
-    glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(Vertices), Vertices, GL_STATIC_DRAW);
-    
-    GLuint indexBuffer;
-    glGenBuffers(1, &indexBuffer);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBuffer);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(Indices), Indices, GL_STATIC_DRAW);
-    
-}
+//- (void)setupVBOs {
+//    
+//    GLuint vertexBuffer;
+//    glGenBuffers(1, &vertexBuffer);
+//    glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
+//    glBufferData(GL_ARRAY_BUFFER, sizeof(Vertices), Vertices, GL_STATIC_DRAW);
+//
+//    
+//    GLuint indexBuffer;
+//    glGenBuffers(1, &indexBuffer);
+//    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBuffer);
+//    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(Indices), Indices, GL_STATIC_DRAW);
+//    
+//}
 
 - (void)setupDisplayLink {
     CADisplayLink* displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(render:)];
@@ -91,13 +152,17 @@ const GLubyte Indices[] = {
 {
     self = [super initWithFrame:frame];
     if (self) {
+        
+        
+        zoom = 3;
+        
         [self setupLayer];        
         [self setupContext];  
         [self setupDepthBuffer];
         [self setupRenderBuffer]; 
         [self setupFrameBuffer]; 
         [self compileShaders];
-        [self setupVBOs];
+//        [self setupVBOs];
         [self setupDisplayLink];
     }
     return self;
@@ -224,23 +289,35 @@ const GLubyte Indices[] = {
  * Render the view
  */
 - (void)render:(CADisplayLink*)displayLink {
-    glClearColor(0, 104.0/255.0, 55.0/255.0, 1.0);
+    glClearColor(0.5, 0.5, 0.5, 1.0);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glEnable(GL_DEPTH_TEST);
     
     CC3GLMatrix *projection = [CC3GLMatrix matrix];
-    float h = 4.0f * self.frame.size.height / self.frame.size.width;
-    [projection populateFromFrustumLeft:-2 andRight:2 andBottom:-h/2 andTop:h/2 andNear:4 andFar:10];
+    float h = self.frame.size.height / self.frame.size.width;
+    [projection populateFromFrustumLeft:-1 andRight:1 andBottom:-h andTop:h andNear:1 andFar:10];
     glUniformMatrix4fv(_projectionUniform, 1, 0, projection.glMatrix);
     
     CC3GLMatrix *modelView = [CC3GLMatrix matrix];
-    [modelView populateFromTranslation:CC3VectorMake(sin(CACurrentMediaTime()), 0, -7)];
-    _currentRotation += displayLink.duration * 90;
-    [modelView rotateBy:CC3VectorMake(_currentRotation, _currentRotation, 0)];
+    [modelView populateFromTranslation:CC3VectorMake(0, 0, -7)];
+//    _currentRotation += displayLink.duration * 90;
+//    [modelView rotateBy:CC3VectorMake(_currentRotation, _currentRotation, 0)];
     
     glUniformMatrix4fv(_modelViewUniform, 1, 0, modelView.glMatrix);
     
     glViewport(0, 0, self.frame.size.width, self.frame.size.height);
+    
+    GLuint vertexBuffer;
+    glGenBuffers(1, &vertexBuffer);
+    glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(Vertices), Vertices, GL_STATIC_DRAW);
+    
+    
+    GLuint indexBuffer;
+    glGenBuffers(1, &indexBuffer);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBuffer);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(Indices), Indices, GL_STATIC_DRAW);
+    
     
     glVertexAttribPointer(_positionSlot, 3, GL_FLOAT, GL_FALSE, 
                           sizeof(Vertex), 0);
@@ -249,6 +326,25 @@ const GLubyte Indices[] = {
     
     glDrawElements(GL_TRIANGLES, sizeof(Indices)/sizeof(Indices[0]), 
                    GL_UNSIGNED_BYTE, 0);
+    
+    GLuint vertexBuffer2;
+    glGenBuffers(1, &vertexBuffer2);
+    glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer2);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(Vertices2), Vertices2, GL_STATIC_DRAW);
+    
+    GLuint indexBuffer2;
+    glGenBuffers(1, &indexBuffer2);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBuffer2);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(Indices), Indices, GL_STATIC_DRAW);
+//    
+    glVertexAttribPointer(_positionSlot, 3, GL_FLOAT, GL_FALSE, 
+                          sizeof(Vertex), 0);
+    glVertexAttribPointer(_colorSlot, 4, GL_FLOAT, GL_FALSE, 
+                          sizeof(Vertex), (GLvoid*) (sizeof(float) * 3));
+    
+    glDrawElements(GL_TRIANGLES, sizeof(Indices)/sizeof(Indices[0]), 
+                   GL_UNSIGNED_BYTE, 0);
+    
     
     [_context presentRenderbuffer:GL_RENDERBUFFER];
 }

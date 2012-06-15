@@ -20,4 +20,7 @@
     
 }
 
+
+@property (assign) float zoom;
+
 @end
