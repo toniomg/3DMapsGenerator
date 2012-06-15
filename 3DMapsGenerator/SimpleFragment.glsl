@@ -1,5 +1,5 @@
-varying lowp vec4 DestinationColor; // 1
+varying lowp vec4 DestinationColor; 
  
-void main(void) { // 2
-    gl_FragColor = DestinationColor; // 3
+void main(void) {
+    gl_FragColor = DestinationColor; 
 }
