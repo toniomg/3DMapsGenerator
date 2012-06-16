@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9BA84A99158C937700B06128 /* Block.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BA84A98158C937700B06128 /* Block.m */; };
 		B8CE65C1158B3B0A006CBA53 /* OpenGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = B8CE65C0158B3B0A006CBA53 /* OpenGLView.m */; };
 		B8CE65C3158B3EA2006CBA53 /* SimpleVertex.glsl in Resources */ = {isa = PBXBuildFile; fileRef = B8CE65C2158B3EA2006CBA53 /* SimpleVertex.glsl */; };
 		B8CE65C5158B3EB8006CBA53 /* SimpleFragment.glsl in Resources */ = {isa = PBXBuildFile; fileRef = B8CE65C4158B3EB8006CBA53 /* SimpleFragment.glsl */; };
@@ -14,8 +15,6 @@
 		B8CE65D2158B41A5006CBA53 /* CC3GLMatrix.m in Sources */ = {isa = PBXBuildFile; fileRef = B8CE65CA158B41A5006CBA53 /* CC3GLMatrix.m */; };
 		B8CE65D3158B41A5006CBA53 /* CC3Kazmath.c in Sources */ = {isa = PBXBuildFile; fileRef = B8CE65CB158B41A5006CBA53 /* CC3Kazmath.c */; };
 		B8CE65D4158B41A5006CBA53 /* CC3Math.m in Sources */ = {isa = PBXBuildFile; fileRef = B8CE65CF158B41A5006CBA53 /* CC3Math.m */; };
-		B8CE660B158B840C006CBA53 /* MGEditMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8CE6609158B840B006CBA53 /* MGEditMapViewController.m */; };
-		B8CE660F158B849B006CBA53 /* MGEditMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8CE660E158B849A006CBA53 /* MGEditMapViewController.xib */; };
 		B8D3E1521588DA2800F48BC3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8D3E1511588DA2800F48BC3 /* UIKit.framework */; };
 		B8D3E1541588DA2800F48BC3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8D3E1531588DA2800F48BC3 /* Foundation.framework */; };
 		B8D3E1561588DA2800F48BC3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8D3E1551588DA2800F48BC3 /* CoreGraphics.framework */; };
@@ -28,6 +27,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9BA84A97158C937700B06128 /* Block.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Block.h; sourceTree = "<group>"; };
+		9BA84A98158C937700B06128 /* Block.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Block.m; sourceTree = "<group>"; };
 		B8CE65BF158B3B0A006CBA53 /* OpenGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenGLView.h; sourceTree = "<group>"; };
 		B8CE65C0158B3B0A006CBA53 /* OpenGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenGLView.m; sourceTree = "<group>"; };
 		B8CE65C2158B3EA2006CBA53 /* SimpleVertex.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SimpleVertex.glsl; sourceTree = "<group>"; };
@@ -42,9 +43,6 @@
 		B8CE65CE158B41A5006CBA53 /* CC3Math.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CC3Math.h; sourceTree = "<group>"; };
 		B8CE65CF158B41A5006CBA53 /* CC3Math.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CC3Math.m; sourceTree = "<group>"; };
 		B8CE65D0158B41A5006CBA53 /* ccTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ccTypes.h; sourceTree = "<group>"; };
-		B8CE6608158B840B006CBA53 /* MGEditMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGEditMapViewController.h; sourceTree = "<group>"; };
-		B8CE6609158B840B006CBA53 /* MGEditMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGEditMapViewController.m; sourceTree = "<group>"; };
-		B8CE660E158B849A006CBA53 /* MGEditMapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MGEditMapViewController.xib; sourceTree = "<group>"; };
 		B8D3E14D1588DA2800F48BC3 /* 3DMapsGenerator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 3DMapsGenerator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8D3E1511588DA2800F48BC3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B8D3E1531588DA2800F48BC3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -144,9 +142,8 @@
 				B8CE65C0158B3B0A006CBA53 /* OpenGLView.m */,
 				B8CE65D5158B41B0006CBA53 /* Lib */,
 				B8D3E1581588DA2800F48BC3 /* Supporting Files */,
-				B8CE6608158B840B006CBA53 /* MGEditMapViewController.h */,
-				B8CE6609158B840B006CBA53 /* MGEditMapViewController.m */,
-				B8CE660E158B849A006CBA53 /* MGEditMapViewController.xib */,
+				9BA84A97158C937700B06128 /* Block.h */,
+				9BA84A98158C937700B06128 /* Block.m */,
 			);
 			path = 3DMapsGenerator;
 			sourceTree = "<group>";
@@ -216,7 +213,6 @@
 				B8D3E15C1588DA2800F48BC3 /* InfoPlist.strings in Resources */,
 				B8CE65C3158B3EA2006CBA53 /* SimpleVertex.glsl in Resources */,
 				B8CE65C5158B3EB8006CBA53 /* SimpleFragment.glsl in Resources */,
-				B8CE660F158B849B006CBA53 /* MGEditMapViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -235,7 +231,7 @@
 				B8CE65D2158B41A5006CBA53 /* CC3GLMatrix.m in Sources */,
 				B8CE65D3158B41A5006CBA53 /* CC3Kazmath.c in Sources */,
 				B8CE65D4158B41A5006CBA53 /* CC3Math.m in Sources */,
-				B8CE660B158B840C006CBA53 /* MGEditMapViewController.m in Sources */,
+				9BA84A99158C937700B06128 /* Block.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,6 +300,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "3DMapsGenerator/3DMapsGenerator-Prefix.pch";
 				INFOPLIST_FILE = "3DMapsGenerator/3DMapsGenerator-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -315,6 +312,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "3DMapsGenerator/3DMapsGenerator-Prefix.pch";
 				INFOPLIST_FILE = "3DMapsGenerator/3DMapsGenerator-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

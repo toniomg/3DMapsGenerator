@@ -8,6 +8,7 @@
 
 #import "OpenGLView.h"
 #import "CC3GLMatrix.h"
+#import "Block.h"
 
 @interface OpenGLView (){
     
@@ -20,11 +21,13 @@
     
 }
 
+
+
 @end
 
 @implementation OpenGLView
 
-@synthesize zoom;
+@synthesize zoom, editModeEnabled;
 
 typedef struct {
     float Position[3];
@@ -73,10 +76,10 @@ const Vertex Vertices2[] = {
     {{-1, 1, 0}, {0, 0, 1, 1}},
     {{-1, -1, 0}, {0, 0, 0, 1}},
     // Back
-    {{3, 3, -2}, {0, 0, 0, 1}},
-    {{-3, -3, -2}, {0, 0, 0, 1}},
-    {{3, -3, -2}, {0, 0, 0, 1}},
-    {{-3, 3, -2}, {0, 0, 0, 1}},
+    {{5, 5, -2}, {0, 0, 0, 1}},
+    {{-5, -5, -2}, {0, 0, 0, 1}},
+    {{5, -5, -2}, {0, 0, 0, 1}},
+    {{-5, 5, -2}, {0, 0, 0, 1}},
     // Left
     {{-1, -1, 0}, {0, 0, 0, 1}}, 
     {{-1, 1, 0}, {0, 1, 0, 1}},
@@ -155,6 +158,8 @@ const GLubyte Indices[] = {
         
         
         zoom = 3;
+        
+        editModeEnabled = false;
         
         [self setupLayer];        
         [self setupContext];  
@@ -295,17 +300,35 @@ const GLubyte Indices[] = {
     
     CC3GLMatrix *projection = [CC3GLMatrix matrix];
     float h = self.frame.size.height / self.frame.size.width;
-    [projection populateFromFrustumLeft:-1 andRight:1 andBottom:-h andTop:h andNear:1 andFar:10];
+    [projection populateFromFrustumLeft:-1 andRight:1 andBottom:-h andTop:h andNear:1 andFar:15];
     glUniformMatrix4fv(_projectionUniform, 1, 0, projection.glMatrix);
     
     CC3GLMatrix *modelView = [CC3GLMatrix matrix];
     [modelView populateFromTranslation:CC3VectorMake(0, 0, -7)];
-//    _currentRotation += displayLink.duration * 90;
-//    [modelView rotateBy:CC3VectorMake(_currentRotation, _currentRotation, 0)];
+    if (editModeEnabled){
+        _currentRotation = 0;
+    }
+    else {
+        _currentRotation += displayLink.duration * 90;
+    }
+    [modelView rotateBy:CC3VectorMake(_currentRotation, _currentRotation, 0)];
     
     glUniformMatrix4fv(_modelViewUniform, 1, 0, modelView.glMatrix);
     
     glViewport(0, 0, self.frame.size.width, self.frame.size.height);
+    
+    Block *newBlock = [[Block alloc] init];
+    newBlock.blockVertices = [NSValue value:&Vertices withObjCType:@encode(Vertex)];
+    
+    Vertex tempVertices[24];
+    [newBlock.blockVertices getValue:&tempVertices];
+    
+    for (int i = 0; i < 24; i++){
+        NSLog(@"%f = %f", Vertices[i].Position[0], tempVertices[i].Position[0]);
+        NSLog(@"%f = %f", Vertices[i].Position[1], tempVertices[i].Position[1]);
+        NSLog(@"%f = %f", Vertices[i].Position[2], tempVertices[i].Position[2]);
+        NSLog(@" ");
+    }
     
     GLuint vertexBuffer;
     glGenBuffers(1, &vertexBuffer);

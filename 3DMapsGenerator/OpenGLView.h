@@ -22,5 +22,6 @@
 
 
 @property (assign) float zoom;
+@property (assign) BOOL editModeEnabled;
 
 @end
