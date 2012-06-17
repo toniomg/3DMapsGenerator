@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9B9FBF40158E24E90044989A /* MGView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B9FBF3E158E24E90044989A /* MGView.xib */; };
 		9BA84A99158C937700B06128 /* Block.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BA84A98158C937700B06128 /* Block.m */; };
 		B8CE65C1158B3B0A006CBA53 /* OpenGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = B8CE65C0158B3B0A006CBA53 /* OpenGLView.m */; };
 		B8CE65C3158B3EA2006CBA53 /* SimpleVertex.glsl in Resources */ = {isa = PBXBuildFile; fileRef = B8CE65C2158B3EA2006CBA53 /* SimpleVertex.glsl */; };
@@ -27,8 +28,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9B9FBF3E158E24E90044989A /* MGView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MGView.xib; sourceTree = "<group>"; };
 		9BA84A97158C937700B06128 /* Block.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Block.h; sourceTree = "<group>"; };
 		9BA84A98158C937700B06128 /* Block.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Block.m; sourceTree = "<group>"; };
+		9BAEFA95158E184600DFF0AB /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		B8CE65BF158B3B0A006CBA53 /* OpenGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenGLView.h; sourceTree = "<group>"; };
 		B8CE65C0158B3B0A006CBA53 /* OpenGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenGLView.m; sourceTree = "<group>"; };
 		B8CE65C2158B3EA2006CBA53 /* SimpleVertex.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SimpleVertex.glsl; sourceTree = "<group>"; };
@@ -75,6 +78,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9BAEFA93158E180F00DFF0AB /* Model Classes */ = {
+			isa = PBXGroup;
+			children = (
+				9BA84A97158C937700B06128 /* Block.h */,
+				9BA84A98158C937700B06128 /* Block.m */,
+			);
+			name = "Model Classes";
+			sourceTree = "<group>";
+		};
 		B8CE65C6158B41A5006CBA53 /* Cocos3DMathLib */ = {
 			isa = PBXGroup;
 			children = (
@@ -132,18 +144,19 @@
 		B8D3E1571588DA2800F48BC3 /* 3DMapsGenerator */ = {
 			isa = PBXGroup;
 			children = (
+				9BAEFA93158E180F00DFF0AB /* Model Classes */,
 				B8CE65C2158B3EA2006CBA53 /* SimpleVertex.glsl */,
 				B8CE65C4158B3EB8006CBA53 /* SimpleFragment.glsl */,
 				B8D3E1601588DA2800F48BC3 /* MGAppDelegate.h */,
 				B8D3E1611588DA2800F48BC3 /* MGAppDelegate.m */,
 				B8D3E1631588DA2800F48BC3 /* MGViewController.h */,
 				B8D3E1641588DA2800F48BC3 /* MGViewController.m */,
+				9B9FBF3E158E24E90044989A /* MGView.xib */,
 				B8CE65BF158B3B0A006CBA53 /* OpenGLView.h */,
 				B8CE65C0158B3B0A006CBA53 /* OpenGLView.m */,
 				B8CE65D5158B41B0006CBA53 /* Lib */,
 				B8D3E1581588DA2800F48BC3 /* Supporting Files */,
-				9BA84A97158C937700B06128 /* Block.h */,
-				9BA84A98158C937700B06128 /* Block.m */,
+				9BAEFA95158E184600DFF0AB /* Constants.h */,
 			);
 			path = 3DMapsGenerator;
 			sourceTree = "<group>";
@@ -213,6 +226,7 @@
 				B8D3E15C1588DA2800F48BC3 /* InfoPlist.strings in Resources */,
 				B8CE65C3158B3EA2006CBA53 /* SimpleVertex.glsl in Resources */,
 				B8CE65C5158B3EB8006CBA53 /* SimpleFragment.glsl in Resources */,
+				9B9FBF40158E24E90044989A /* MGView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

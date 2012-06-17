@@ -9,6 +9,7 @@
 #import "OpenGLView.h"
 #import "CC3GLMatrix.h"
 #import "Block.h"
+#import "Constants.h"
 
 @interface OpenGLView (){
     
@@ -21,85 +22,49 @@
     
 }
 
-
+@property (nonatomic, retain) NSMutableArray *blocksArray;
 
 @end
 
 @implementation OpenGLView
 
-@synthesize zoom, editModeEnabled;
+@synthesize zoom, editModeEnabled, blocksArray = _blocksArray;
 
-typedef struct {
-    float Position[3];
-    float Color[4];
-} Vertex;
 
-#define TEX_COORD_MAX   1
+#define FLOOR_COLOR {0, 0, 0, 0.8}
 
-const Vertex Vertices[] = {
+
+const Vertex floorVertices[] = {
     // Front
-    {{1, -1, 0}, {1, 0, 0, 1}},
-    {{1, 1, 0}, {1, 0, 0, 1}},
-    {{-1, 1, 0}, {1, 0, 0, 1}},
-    {{-1, -1, 0}, {1, 0, 0, 1}},
+    {{FLOOR_SIZE/2, -FLOOR_SIZE/2, 0}, FLOOR_COLOR},
+    {{FLOOR_SIZE/2, FLOOR_SIZE/2, 0}, FLOOR_COLOR},
+    {{-FLOOR_SIZE/2, FLOOR_SIZE/2, 0}, FLOOR_COLOR},
+    {{-FLOOR_SIZE/2, -FLOOR_SIZE/2, 0}, FLOOR_COLOR},
     // Back
-    {{1, 1, -2}, {1, 0, 1, 1}},
-    {{-1, -1, -2}, {1, 0, 1, 1}},
-    {{1, -1, -2}, {1, 0, 1, 1}},
-    {{-1, 1, -2}, {1, 0, 0, 1}},
+    {{FLOOR_SIZE/2, FLOOR_SIZE/2, -0.05}, FLOOR_COLOR},
+    {{-FLOOR_SIZE/2, -FLOOR_SIZE/2, -0.05}, FLOOR_COLOR},
+    {{FLOOR_SIZE/2, -FLOOR_SIZE/2, -0.05}, FLOOR_COLOR},
+    {{-FLOOR_SIZE/2, FLOOR_SIZE/2, -0.05}, FLOOR_COLOR},
     // Left
-    {{-1, -1, 0}, {1, 0, 0, 1}}, 
-    {{-1, 1, 0}, {0, 1, 0, 1}},
-    {{-1, 1, -2}, {0, 0, 1, 1}},
-    {{-1, -1, -2}, {0, 0, 0, 1}},
+    {{-FLOOR_SIZE/2, -FLOOR_SIZE/2, 0}, FLOOR_COLOR}, 
+    {{-FLOOR_SIZE/2, FLOOR_SIZE/2, 0}, FLOOR_COLOR},
+    {{-FLOOR_SIZE/2, FLOOR_SIZE/2, -0.05}, FLOOR_COLOR},
+    {{-FLOOR_SIZE/2, -FLOOR_SIZE/2, -0.05}, FLOOR_COLOR},
     // Right
-    {{1, -1, -2}, {0, 1, 0, 1}},
-    {{1, 1, -2}, {0, 1, 0, 1}},
-    {{1, 1, 0}, {0, 1, 0, 1}},
-    {{1, -1, 0}, {0, 0, 0, 1}},
+    {{FLOOR_SIZE/2, -FLOOR_SIZE/2, -0.05}, FLOOR_COLOR},
+    {{FLOOR_SIZE/2, FLOOR_SIZE/2, -0.05}, FLOOR_COLOR},
+    {{FLOOR_SIZE/2, FLOOR_SIZE/2, 0}, FLOOR_COLOR},
+    {{FLOOR_SIZE/2, -FLOOR_SIZE/2, 0}, FLOOR_COLOR},
     // Top
-    {{1, 1, 0}, {1, 1, 0, 1}},
-    {{1, 1, -2}, {1, 1, 0, 1}},
-    {{-1, 1, -2}, {1, 1, 0, 1}},
-    {{-1, 1, 0}, {1, 1, 0, 1}},
+    {{FLOOR_SIZE/2, FLOOR_SIZE/2, 0}, FLOOR_COLOR},
+    {{FLOOR_SIZE/2, FLOOR_SIZE/2, -0.05}, FLOOR_COLOR},
+    {{-FLOOR_SIZE/2, FLOOR_SIZE/2, -0.05}, FLOOR_COLOR},
+    {{-FLOOR_SIZE/2, FLOOR_SIZE/2, 0}, FLOOR_COLOR},
     // Bottom
-    {{1, -1, -2}, {1, 0, 0, 1}},
-    {{1, -1, 0}, {0, 1, 0, 1}},
-    {{-1, -1, 0}, {0, 0, 1, 1}}, 
-    {{-1, -1, -2}, {0, 0, 0, 1}}
-};
-
-const Vertex Vertices2[] = {
-    // Front
-    {{1, -1, 0}, {0, 0, 0, 1}},
-    {{1, 1, 0}, {0, 1, 0, 1}},
-    {{-1, 1, 0}, {0, 0, 1, 1}},
-    {{-1, -1, 0}, {0, 0, 0, 1}},
-    // Back
-    {{5, 5, -2}, {0, 0, 0, 1}},
-    {{-5, -5, -2}, {0, 0, 0, 1}},
-    {{5, -5, -2}, {0, 0, 0, 1}},
-    {{-5, 5, -2}, {0, 0, 0, 1}},
-    // Left
-    {{-1, -1, 0}, {0, 0, 0, 1}}, 
-    {{-1, 1, 0}, {0, 1, 0, 1}},
-    {{-1, 1, -2}, {0, 0, 1, 1}},
-    {{-1, -1, -2}, {0, 0, 0, 1}},
-    // Right
-    {{1, -1, -2}, {0, 0, 0, 1}},
-    {{1, 1, -2}, {0, 1, 0, 1}},
-    {{1, 1, 0}, {0, 0, 1, 1}},
-    {{1, -1, 0}, {0, 0, 0, 1}},
-    // Top
-    {{1, 1, 0}, {0, 0, 0, 1}},
-    {{1, 1, -2}, {0, 1, 0, 1}},
-    {{-1, 1, -2}, {0, 0, 1, 1}},
-    {{-1, 1, 0}, {0, 0, 0, 1}},
-    // Bottom
-    {{1, -1, -2}, {0, 0, 0, 1}},
-    {{1, -1, 0}, {0, 1, 0, 1}},
-    {{-1, -1, 0}, {0, 0, 1, 1}}, 
-    {{-1, -1, -2}, {0, 0, 0, 1}}
+    {{FLOOR_SIZE/2, -FLOOR_SIZE/2, -0.05}, FLOOR_COLOR},
+    {{FLOOR_SIZE/2, -FLOOR_SIZE/2, 0}, FLOOR_COLOR},
+    {{-FLOOR_SIZE/2, -FLOOR_SIZE/2, 0}, FLOOR_COLOR}, 
+    {{-FLOOR_SIZE/2, -FLOOR_SIZE/2, -0.05}, FLOOR_COLOR}
 };
 
 const GLubyte Indices[] = {
@@ -123,11 +88,10 @@ const GLubyte Indices[] = {
     22, 23, 20
 };
 
-
 - (void)dealloc
 {
     [_context release];
-    _context = nil;
+    [_blocksArray release];
     [super dealloc];
 }
 
@@ -160,6 +124,9 @@ const GLubyte Indices[] = {
         zoom = 3;
         
         editModeEnabled = false;
+        
+        self.blocksArray = [[[NSMutableArray alloc] initWithCapacity:1] autorelease];
+        [self.blocksArray addObject:[NSValue value:&floorVertices withObjCType:@encode(Vertex[VERTICES_NUMBER])]];
         
         [self setupLayer];        
         [self setupContext];  
@@ -298,13 +265,18 @@ const GLubyte Indices[] = {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glEnable(GL_DEPTH_TEST);
     
+    //enable transparency
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    
     CC3GLMatrix *projection = [CC3GLMatrix matrix];
     float h = self.frame.size.height / self.frame.size.width;
-    [projection populateFromFrustumLeft:-1 andRight:1 andBottom:-h andTop:h andNear:1 andFar:15];
+    [projection populateFromFrustumLeft:-1 andRight:1 andBottom:-h andTop:h andNear:1 andFar:20];
     glUniformMatrix4fv(_projectionUniform, 1, 0, projection.glMatrix);
     
     CC3GLMatrix *modelView = [CC3GLMatrix matrix];
-    [modelView populateFromTranslation:CC3VectorMake(0, 0, -7)];
+    [modelView populateFromTranslation:CC3VectorMake(0, 0, -9)];
+    editModeEnabled = false;
     if (editModeEnabled){
         _currentRotation = 0;
     }
@@ -317,57 +289,34 @@ const GLubyte Indices[] = {
     
     glViewport(0, 0, self.frame.size.width, self.frame.size.height);
     
-    Block *newBlock = [[Block alloc] init];
-    newBlock.blockVertices = [NSValue value:&Vertices withObjCType:@encode(Vertex)];
-    
-    Vertex tempVertices[24];
-    [newBlock.blockVertices getValue:&tempVertices];
-    
-    for (int i = 0; i < 24; i++){
-        NSLog(@"%f = %f", Vertices[i].Position[0], tempVertices[i].Position[0]);
-        NSLog(@"%f = %f", Vertices[i].Position[1], tempVertices[i].Position[1]);
-        NSLog(@"%f = %f", Vertices[i].Position[2], tempVertices[i].Position[2]);
-        NSLog(@" ");
+    //For every block, render it in the screen
+    for (NSValue *blockToDraw in self.blocksArray){
+        
+        
+        Vertex tempVertices[VERTICES_NUMBER];
+        [blockToDraw getValue:&tempVertices];
+        
+        GLuint vertexBuffer;
+        glGenBuffers(1, &vertexBuffer);
+        glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
+        glBufferData(GL_ARRAY_BUFFER, sizeof(tempVertices), tempVertices, GL_STATIC_DRAW);
+        
+        
+        GLuint indexBuffer;
+        glGenBuffers(1, &indexBuffer);
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBuffer);
+        glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(Indices), Indices, GL_STATIC_DRAW);
+        
+        
+        glVertexAttribPointer(_positionSlot, 3, GL_FLOAT, GL_FALSE, 
+                              sizeof(Vertex), 0);
+        glVertexAttribPointer(_colorSlot, 4, GL_FLOAT, GL_FALSE, 
+                              sizeof(Vertex), (GLvoid*) (sizeof(float) * 3));
+        
+        glDrawElements(GL_TRIANGLES, sizeof(Indices)/sizeof(Indices[0]), 
+                       GL_UNSIGNED_BYTE, 0);
+        
     }
-    
-    GLuint vertexBuffer;
-    glGenBuffers(1, &vertexBuffer);
-    glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(Vertices), Vertices, GL_STATIC_DRAW);
-    
-    
-    GLuint indexBuffer;
-    glGenBuffers(1, &indexBuffer);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBuffer);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(Indices), Indices, GL_STATIC_DRAW);
-    
-    
-    glVertexAttribPointer(_positionSlot, 3, GL_FLOAT, GL_FALSE, 
-                          sizeof(Vertex), 0);
-    glVertexAttribPointer(_colorSlot, 4, GL_FLOAT, GL_FALSE, 
-                          sizeof(Vertex), (GLvoid*) (sizeof(float) * 3));
-    
-    glDrawElements(GL_TRIANGLES, sizeof(Indices)/sizeof(Indices[0]), 
-                   GL_UNSIGNED_BYTE, 0);
-    
-    GLuint vertexBuffer2;
-    glGenBuffers(1, &vertexBuffer2);
-    glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer2);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(Vertices2), Vertices2, GL_STATIC_DRAW);
-    
-    GLuint indexBuffer2;
-    glGenBuffers(1, &indexBuffer2);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBuffer2);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(Indices), Indices, GL_STATIC_DRAW);
-//    
-    glVertexAttribPointer(_positionSlot, 3, GL_FLOAT, GL_FALSE, 
-                          sizeof(Vertex), 0);
-    glVertexAttribPointer(_colorSlot, 4, GL_FLOAT, GL_FALSE, 
-                          sizeof(Vertex), (GLvoid*) (sizeof(float) * 3));
-    
-    glDrawElements(GL_TRIANGLES, sizeof(Indices)/sizeof(Indices[0]), 
-                   GL_UNSIGNED_BYTE, 0);
-    
     
     [_context presentRenderbuffer:GL_RENDERBUFFER];
 }
@@ -387,13 +336,12 @@ const GLubyte Indices[] = {
     _eaglLayer.opaque = YES;
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
+//Add new block
+-(void)addNewBlock:(Block *)block{
+    
+    [self.blocksArray addObject:block.blockVertices];
+    
+    
 }
-*/
 
 @end

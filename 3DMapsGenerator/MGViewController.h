@@ -11,4 +11,12 @@
 
 @interface MGViewController : UIViewController
 
+@property (nonatomic, retain) IBOutlet UITextField *xTextField;
+@property (nonatomic, retain) IBOutlet UITextField *yTextField;
+@property (nonatomic, retain) IBOutlet UITextField *widthTextField;
+@property (nonatomic, retain) IBOutlet UITextField *heightTextField;
+@property (nonatomic, retain) IBOutlet UITextField *lenghtTextField;
+
+-(IBAction)addBlockPressed:(id)sender;
+
 @end

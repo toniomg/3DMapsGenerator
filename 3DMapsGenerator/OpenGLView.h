@@ -11,6 +11,8 @@
 #include <OpenGLES/ES2/gl.h>
 #include <OpenGLES/ES2/glext.h>
 
+@class Block;
+
 
 @interface OpenGLView : UIView {
     
@@ -23,5 +25,7 @@
 
 @property (assign) float zoom;
 @property (assign) BOOL editModeEnabled;
+
+-(void)addNewBlock:(Block *)block;
 
 @end
