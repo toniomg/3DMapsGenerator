@@ -28,7 +28,7 @@
 
 @implementation OpenGLView
 
-@synthesize zoom, editModeEnabled, blocksArray = _blocksArray;
+@synthesize zoom, editModeEnabled, blocksArray = _blocksArray, rotationY, rotationX;
 
 
 #define FLOOR_COLOR {0, 0, 0, 0.8}
@@ -122,6 +122,7 @@ const GLubyte Indices[] = {
         
         
         zoom = 3;
+        rotationY = rotationX = 0;
         
         editModeEnabled = false;
         
@@ -283,7 +284,7 @@ const GLubyte Indices[] = {
     else {
         _currentRotation += displayLink.duration * 90;
     }
-    [modelView rotateBy:CC3VectorMake(_currentRotation, _currentRotation, 0)];
+    [modelView rotateBy:CC3VectorMake(rotationY, rotationX, 0)];
     
     glUniformMatrix4fv(_modelViewUniform, 1, 0, modelView.glMatrix);
     
@@ -292,7 +293,6 @@ const GLubyte Indices[] = {
     //For every block, render it in the screen
     for (NSValue *blockToDraw in self.blocksArray){
         
-        
         Vertex tempVertices[VERTICES_NUMBER];
         [blockToDraw getValue:&tempVertices];
         
@@ -300,7 +300,6 @@ const GLubyte Indices[] = {
         glGenBuffers(1, &vertexBuffer);
         glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
         glBufferData(GL_ARRAY_BUFFER, sizeof(tempVertices), tempVertices, GL_STATIC_DRAW);
-        
         
         GLuint indexBuffer;
         glGenBuffers(1, &indexBuffer);

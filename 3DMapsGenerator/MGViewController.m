@@ -101,17 +101,41 @@
     
     UIPanGestureRecognizer *dragGesture = (UIPanGestureRecognizer *)sender;
     
-    NSLog(@"%@", NSStringFromCGPoint([dragGesture translationInView:self.view]));
+    //NSLog(@"%@", NSStringFromCGPoint([dragGesture translationInView:self.view]));
     
     switch (dragGesture.numberOfTouches) {
         case N_FINGERS_MOVING:{
     
+            CGPoint velocity = [dragGesture velocityInView:self.view];
+            
+            if (velocity.y > 0){
+                
+                //Gesture goes from 0 to self.view.frame.size.height
+                //Rotation Goes from 0 to 360
+                float angle = [dragGesture translationInView:self.view].y/self.view.frame.size.height*360;
+                NSLog(@"y %f %f", [dragGesture translationInView:self.view].y, angle);
+                self.glView.rotationY = angle;
+                
+            }
+            else if (velocity.x > 0){
+                
+                float angle = [dragGesture translationInView:self.view].x/self.view.frame.size.height*360;
+                NSLog(@"x %f %f", [dragGesture translationInView:self.view].x, angle);
+                self.glView.rotationX = angle;
+            }
+            
             break;
         }
             
             
         case N_FINGERS_ROTATING:{
             //TODO
+           
+           
+           
+            
+
+        
             break;
         }
             

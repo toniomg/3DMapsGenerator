@@ -25,6 +25,8 @@
 
 @property (assign) float zoom;
 @property (assign) BOOL editModeEnabled;
+@property (assign) float rotationY;
+@property (assign) float rotationX;
 
 -(void)addNewBlock:(Block *)block;
 
